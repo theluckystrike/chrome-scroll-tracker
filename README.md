@@ -1,12 +1,42 @@
-# chrome-scroll-tracker — Scroll Depth and Reading Progress
-> **Built by [Zovo](https://zovo.one)** | `npm i chrome-scroll-tracker`
+# chrome-scroll-tracker
 
-Scroll depth milestones, element visibility, scroll-to-top button, and reading time estimate.
+Track scroll position and depth in Chrome extensions.
 
-```typescript
-import { ScrollTracker } from 'chrome-scroll-tracker';
-const tracker = new ScrollTracker();
-tracker.onDepth(50, () => console.log('50% scrolled')).onDepth(100, () => console.log('100%')).start();
-ScrollTracker.addScrollToTop();
+## Overview
+
+chrome-scroll-tracker provides utilities to track scroll depth, position, and generate scroll reports for analytics.
+
+## Installation
+
+```bash
+npm install chrome-scroll-tracker
 ```
-MIT License
+
+## Usage
+
+### Track Scroll
+
+```javascript
+import { ScrollTracker } from 'chrome-scroll-tracker';
+
+const tracker = new ScrollTracker();
+
+tracker.on('scroll', (data) => {
+  console.log(data.depth, data.position);
+});
+```
+
+## API
+
+### Events
+
+- `scroll` - Scroll position changed
+- `bottom` - Reached page bottom
+
+## Browser Support
+
+- Chrome 90+
+
+## License
+
+MIT
